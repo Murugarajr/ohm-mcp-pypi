@@ -8,6 +8,7 @@ import sys
 import re
 from pathlib import Path
 
+
 def bump_version(current_version, bump_type):
     """Bump version according to semantic versioning."""
     major, minor, patch = map(int, current_version.split('.'))
@@ -26,23 +27,26 @@ def bump_version(current_version, bump_type):
 
     return f"{major}.{minor}.{patch}"
 
+
 def update_pyproject_toml(version):
     """Update version in pyproject.toml."""
     pyproject_path = Path(__file__).parent / "pyproject.toml"
 
-    with open(pyproject_path, 'r') as f:
+    with open(pyproject_path, 'r', encoding='utf-8') as f:
         content = f.read()
 
     # Update version line
     pattern = r'(version = ")[^"]*(")'
     new_content = re.sub(pattern, rf'\g<1>{version}\g<2>', content)
 
-    with open(pyproject_path, 'w') as f:
+    with open(pyproject_path, 'w', encoding='utf-8') as f:
         f.write(new_content)
 
     print(f"✅ Updated pyproject.toml to version {version}")
 
+
 def main():
+    """Main entry point for the version bumper script."""
     if len(sys.argv) != 2:
         print("Usage: python bump_version.py [patch|minor|major]")
         sys.exit(1)
@@ -54,7 +58,7 @@ def main():
 
     # Read current version
     pyproject_path = Path(__file__).parent / "pyproject.toml"
-    with open(pyproject_path, 'r') as f:
+    with open(pyproject_path, 'r', encoding='utf-8') as f:
         content = f.read()
 
     version_match = re.search(r'version = "([^"]*)"', content)
@@ -74,6 +78,7 @@ def main():
     print(f"   cd {Path(__file__).parent}")
     print("   python -m build")
     print("   twine upload dist/*")
+
 
 if __name__ == "__main__":
     main()

@@ -37,14 +37,10 @@ from mcp.server.fastmcp import FastMCP
 mcp = FastMCP("code-refactoring-assistant")
 
 # Configure logging (NEVER use print() for stdio-based servers)
-# Remove all handlers to prevent interference with MCP stdio protocol
+# For stdio transport, only log critical errors to avoid interfering with protocol
 logging.getLogger().handlers.clear()
-logging.basicConfig(
-    level=logging.WARNING,  # Only log warnings and errors to file
-    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-    handlers=[logging.FileHandler("refactor_mcp.log")],
-)
 logger = logging.getLogger(__name__)
+logger.setLevel(logging.ERROR)  # Only log errors, not to stdout/stderr
 
 # ============================================================================
 # CORE ANALYSIS ENGINE

@@ -621,6 +621,6 @@ Built with [Model Context Protocol](https://modelcontextprotocol.io) • Python 
 
 ⭐ **Star this repo** if it helps you write cleaner code!
 
-[Documentation](https://ohm-mcp.dev) 
+[Documentation](https://www.ohm-mcp.dev) 
 
 </div>
