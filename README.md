@@ -430,7 +430,19 @@ where python
 
 ---
 
-## 🎯 Key Tools
+## 🎯 Key Tools (30 Total)
+
+<details>
+<summary><b>📋 General Analysis & Planning (4 tools)</b></summary>
+
+| Tool | Purpose | Output |
+|------|---------|--------|
+| `analyze_codebase` | Comprehensive code analysis | Issues + refactoring plan |
+| `propose_function_refactor` | Function-level refactor planning | Detailed refactor proposal |
+| `explain_refactoring` | Explain refactoring patterns | Educational guidance |
+| `create_refactor_patch` | Generate unified diff patches | Patch file |
+
+</details>
 
 <details>
 <summary><b>🏗️ Architecture & Design (4 tools)</b></summary>
@@ -445,7 +457,7 @@ where python
 </details>
 
 <details>
-<summary><b>🔧 Code Quality & Refactoring (6 tools)</b></summary>
+<summary><b>🔧 Code Quality & Refactoring (10 tools)</b></summary>
 
 | Tool | Purpose | Key Feature |
 |------|---------|-------------|
@@ -453,8 +465,12 @@ where python
 | `suggest_extractable_methods` | Find extractable blocks | Cohesion scoring |
 | `detect_dead_code` | Find unused code | 5 types of dead code |
 | `refactor_imports` | Update imports project-wide | Safe module renaming |
+| `refactor_single_file_imports` | Refactor imports in one file | Single file focus |
+| `analyze_wildcard_imports` | Find wildcard imports | Explicit replacements |
 | `rename_symbol` | Rename across codebase | Conflict detection |
 | `detect_code_duplicates` | Find DRY violations | Exact + near duplicates |
+| `extract_function_code` | Extract single function code | Code extraction utility |
+| `apply_function_refactor` | Apply function-level refactor | Direct code modification |
 
 **Example - Extract Method:**
 ```python
@@ -467,7 +483,7 @@ result = extract_method_ast(code, 45, 60, "calculate_total")
 </details>
 
 <details>
-<summary><b>📊 Type Safety & Testing (4 tools)</b></summary>
+<summary><b>📊 Type Safety & Testing (5 tools)</b></summary>
 
 | Tool | Purpose | Benefit |
 |------|---------|---------|
@@ -475,11 +491,12 @@ result = extract_method_ast(code, 45, 60, "calculate_total")
 | `generate_type_stub` | Create .pyi files | Gradual typing |
 | `generate_characterization_tests` | Auto-generate tests | Safe refactoring |
 | `generate_test_for_function` | Single function tests | Targeted testing |
+| `suggest_tests` | Suggest test strategies | Test planning |
 
 </details>
 
 <details>
-<summary><b>⚡ Performance & Coverage (2 tools)</b></summary>
+<summary><b>⚡ Performance & Prioritization (2 tools)</b></summary>
 
 | Tool | Purpose | Detects |
 |------|---------|---------|
@@ -489,7 +506,7 @@ result = extract_method_ast(code, 45, 60, "calculate_total")
 </details>
 
 <details>
-<summary><b>🤖 Automated Execution (3 tools)</b></summary>
+<summary><b>🤖 Automated Execution & History (4 tools)</b></summary>
 
 ```mermaid
 graph LR
@@ -503,11 +520,19 @@ graph LR
     H --> I[rollback_refactoring]
 ```
 
+| Tool | Purpose |
+|------|--------|
+| `apply_refactoring` | Auto-apply refactoring with safety checks |
+| `rollback_refactoring` | Rollback previous refactoring |
+| `show_refactoring_history` | View refactoring audit trail |
+| `cleanup_old_backups` | Clean up old backup files |
+
 **Features:**
 - ✅ Automatic backup before changes
 - ✅ Test execution validation
 - ✅ Auto-rollback on failure
-- ✅ Full audit trail (`show_refactoring_history`)
+- ✅ Full audit trail with history
+- ✅ Automatic backup cleanup
 
 </details>
 
@@ -681,13 +706,14 @@ generate_quality_report(format="html") → open dashboard → track trends
 ## 📈 Metrics
 
 ```
-✅ 13 Advanced Capabilities
-✅ 30+ Static Checks
+✅ 30 MCP Tools
+✅ 40+ Static Checks
 ✅ 100% AST Accuracy
 ✅ Zero Regex Patterns
-✅ Automated Execution
-✅ Beautiful Dashboards
+✅ Automated Execution with Rollback
+✅ Beautiful Dashboards (HTML/JSON/MD)
 ✅ Universal MCP Compatibility
+✅ Safe Refactoring with Auto-Backup
 ```
 
 ---
@@ -705,7 +731,7 @@ generate_quality_report(format="html") → open dashboard → track trends
 
 2. **Test MCP server directly:**
    ```bash
-   python mcp_server.py
+   python -m ohm_mcp.server
    ```
 
 3. **Check logs:**
