@@ -108,13 +108,13 @@ pip install -e .
 <details>
 <summary><b>🟣 Cursor IDE with NPX</b></summary>
 
-**After publishing to npm:**
+**Global (After publishing to npm):**
 ```json
 {
   "mcpServers": {
     "ohm-mcp": {
       "command": "npx",
-      "args": ["ohm-mcp@latest"]
+      "args": ["-y", "ohm-mcp@latest"]
     }
   }
 }
@@ -142,13 +142,13 @@ pip install -e .
 <details>
 <summary><b>🟢 Cline (VS Code Extension) with NPX</b></summary>
 
-**After publishing to npm:**
+**Global (After publishing to npm):**
 ```json
 {
   "mcpServers": {
     "ohm-mcp": {
       "command": "npx",
-      "args": ["ohm-mcp@latest"]
+      "args": ["-y", "ohm-mcp@latest"]
     }
   }
 }
@@ -170,6 +170,105 @@ pip install -e .
 - Open Cline panel
 - Tools are available in agent context
 - Ask: "Analyze type coverage and suggest improvements"
+
+</details>
+
+<details>
+<summary><b>🟠 Antigravity with NPX</b></summary>
+
+**Global (After publishing to npm):**
+```json
+{
+  "mcpServers": {
+    "ohm-mcp": {
+      "command": "npx",
+      "args": ["-y", "ohm-mcp@latest"],
+      "env": {
+        "PYTHONUNBUFFERED": "1"
+      }
+    }
+  }
+}
+```
+
+**Usage:**
+- Tools are automatically available in Antigravity
+- Ask: "Use ohm-mcp to analyze architecture"
+
+</details>
+
+<details>
+<summary><b>🔴 Roo Code with NPX</b></summary>
+
+**Global (After publishing to npm):**
+```json
+{
+  "mcpServers": {
+    "ohm-mcp": {
+      "command": "npx",
+      "args": ["-y", "ohm-mcp@latest"]
+    }
+  }
+}
+```
+
+**Usage:**
+- Open Roo Code panel
+- Tools are available in agent context
+- Ask: "Use ohm-mcp to detect duplicates"
+
+</details>
+
+<details>
+<summary><b>⚫ Codex VS Code with NPX</b></summary>
+
+**Configuration (config.toml):**
+```toml
+[mcp_servers.ohm-mcp]
+args = ["-y", "ohm-mcp@latest"]
+command = "npx"
+```
+
+**Usage:**
+- Open Codex panel
+- Tools are automatically available
+- Ask: "Use ohm-mcp to suggest design patterns"
+
+</details>
+
+<details>
+<summary><b>🟡 Kilo Code with NPX (Local/Global)</b></summary>
+
+**Local (For local development with virtual environment):**
+```json
+{
+  "mcpServers": {
+    "ohm-mcp": {
+      "command": "/Users/username/project/venv/bin/python",
+      "args": ["-m", "ohm_mcp.server"],
+      "disabled": false,
+      "alwaysAllow": []
+    }
+  }
+}
+```
+
+**Global (After publishing to npm):**
+```json
+{
+  "mcpServers": {
+    "ohm-mcp": {
+      "command": "npx",
+      "args": ["-y", "ohm-mcp@latest"]
+    }
+  }
+}
+```
+
+**Usage:**
+- Open Kilo Code panel
+- Tools are available in agent context
+- Ask: "Use ohm-mcp for refactoring"
 
 </details>
 
