@@ -69,16 +69,124 @@ pip install -e .
 
 ### IDE Configuration
 
-<details>
-<summary><b>🔵 GitHub Copilot (VS Code)</b></summary>
+#### 📦 **Option 1: NPX (Recommended - Auto-installs dependencies)**
 
-Add to `.vscode/mcp.json`:
+<details>
+<summary><b>🔵 GitHub Copilot (VS Code) with NPX</b></summary>
+
+**After publishing to npm:**
+```json
+{
+  "mcpServers": {
+    "ohm-mcp": {
+      "command": "npx",
+      "args": ["ohm-mcp@latest"]
+    }
+  }
+}
+```
+
+**For local development:**
+```json
+{
+  "mcpServers": {
+    "ohm-mcp": {
+      "command": "npx",
+      "args": ["--package", "/path/to/ohm-mcp-npm", "ohm-mcp"]
+    }
+  }
+}
+```
+
+**Usage:**
+- Open Copilot Chat
+- Type `#` and select `ohm-mcp` tools
+- Ask: "Analyze this file and suggest refactorings"
+
+</details>
+
+<details>
+<summary><b>🟣 Cursor IDE with NPX</b></summary>
+
+**After publishing to npm:**
+```json
+{
+  "mcpServers": {
+    "ohm-mcp": {
+      "command": "npx",
+      "args": ["ohm-mcp@latest"]
+    }
+  }
+}
+```
+
+**For local development:**
+```json
+{
+  "mcpServers": {
+    "ohm-mcp": {
+      "command": "npx",
+      "args": ["--package", "/path/to/ohm-mcp-npm", "ohm-mcp"]
+    }
+  }
+}
+```
+
+**Usage:**
+- Open Cursor Chat (Cmd+L / Ctrl+L)
+- Tools are automatically available
+- Ask: "Use ohm-mcp to detect dead code"
+
+</details>
+
+<details>
+<summary><b>🟢 Cline (VS Code Extension) with NPX</b></summary>
+
+**After publishing to npm:**
+```json
+{
+  "mcpServers": {
+    "ohm-mcp": {
+      "command": "npx",
+      "args": ["ohm-mcp@latest"]
+    }
+  }
+}
+```
+
+**For local development:**
+```json
+{
+  "mcpServers": {
+    "ohm-mcp": {
+      "command": "npx",
+      "args": ["--package", "/path/to/ohm-mcp-npm", "ohm-mcp"]
+    }
+  }
+}
+```
+
+**Usage:**
+- Open Cline panel
+- Tools are available in agent context
+- Ask: "Analyze type coverage and suggest improvements"
+
+</details>
+
+#### 🐍 **Option 2: Direct Python (Manual setup)**
+
+<details>
+<summary><b>🔵 GitHub Copilot (VS Code) with Python</b></summary>
+
+First install: `pip install ohm-mcp`
+
+Then add to `.vscode/mcp.json`:
 ```json
 {
   "servers": {
     "ohm-mcp": {
       "command": "python",
-      "args": ["${workspaceFolder}/mcp_server.py"]
+      "args": ["-m", "ohm_mcp.server"]
     }
   },
   "inputs": []
@@ -93,17 +201,17 @@ Add to `.vscode/mcp.json`:
 </details>
 
 <details>
-<summary><b>🟣 Cursor IDE</b></summary>
+<summary><b>🟣 Cursor IDE with Python</b></summary>
 
-Add to Cursor's MCP settings file (`.cursorrules` or MCP config):
+First install: `pip install ohm-mcp`
+
+Then add to Cursor's MCP settings file (`.cursorrules` or MCP config):
 ```json
 {
   "mcpServers": {
     "ohm-mcp": {
-      "command": "/path/to/your/python",
-      "args": [
-        "${workspaceFolder}/ohm-mcp/mcp_server.py"
-      ]
+      "command": "python",
+      "args": ["-m", "ohm_mcp.server"]
     }
   },
   "inputs": []
@@ -116,9 +224,7 @@ Add to Cursor's MCP settings file (`.cursorrules` or MCP config):
   "mcpServers": {
     "ohm-mcp": {
       "command": "/Users/username/projects/venv/bin/python",
-      "args": [
-        "${workspaceFolder}/ohm-mcp/mcp_server.py"
-      ]
+      "args": ["-m", "ohm_mcp.server"]
     }
   }
 }
@@ -132,16 +238,17 @@ Add to Cursor's MCP settings file (`.cursorrules` or MCP config):
 </details>
 
 <details>
-<summary><b>🟢 Cline (VS Code Extension)</b></summary>
+<summary><b>🟢 Cline (VS Code Extension) with Python</b></summary>
 
-Add to Cline's MCP settings:
+First install: `pip install ohm-mcp`
+
+Then add to Cline's MCP settings:
 ```json
 {
   "mcpServers": {
     "ohm-mcp": {
-      "command": "/path/to/your/python",
-      "args": ["mcp_server.py"],
-      "cwd": "/absolute/path/to/ohm-mcp"
+      "command": "python",
+      "args": ["-m", "ohm_mcp.server"]
     }
   }
 }
@@ -153,8 +260,7 @@ Add to Cline's MCP settings:
   "mcpServers": {
     "ohm-mcp": {
       "command": "/Users/username/projects/venv/bin/python",
-      "args": ["mcp_server.py"],
-      "cwd": "/Users/username/projects/ohm-mcp"
+      "args": ["-m", "ohm_mcp.server"]
     }
   }
 }
