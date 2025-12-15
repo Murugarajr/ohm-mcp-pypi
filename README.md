@@ -430,6 +430,114 @@ where python
 
 ---
 
+## 💡 Quick Usage Examples
+
+Once configured, simply reference tools in your AI assistant chat using the format: use `#ohm-mcp.tool_name` on the current file or `@file_name.py`
+
+### **🗑️ Find Dead Code**
+```
+Use #ohm-mcp.detect_dead_code on @utils.py
+```
+This will detect:
+- ✅ Unused imports (import statements never referenced)
+- ✅ Unused variables (assigned but never read)
+- ✅ Unreachable code (after return/raise/break/continue)
+- ✅ Unused functions (defined but never called)
+- ✅ Shadowed variables (inner scope hides outer scope variable)
+
+### **📋 Code Duplication Detection**
+```
+Use #ohm-mcp.detect_code_duplicates to find duplicates in /path/to/project
+```
+Finds:
+- ✅ Exact duplicates (100% identical code blocks)
+- ✅ Near duplicates (90%+ similarity)
+- ✅ Duplicate functions (same structure, different names)
+- ✅ Provides refactoring suggestions to eliminate duplication
+
+### **🏗️ Architecture Analysis**
+```
+Analyze architecture of @my_module.py using #ohm-mcp.analyze_architecture
+```
+Detects:
+- ✅ God Objects (classes doing too much)
+- ✅ SOLID principle violations
+- ✅ Circular dependencies
+- ✅ High coupling issues
+
+### **✂️ Extract Method Refactoring**
+```
+Use #ohm-mcp.extract_method_ast to extract lines 45-60 from @handler.py into a new function called "process_request"
+```
+Automatically:
+- ✅ Detects required parameters
+- ✅ Identifies return values
+- ✅ Generates refactored code
+- ✅ Creates unified diff patch
+
+### **🔄 Safe Symbol Renaming**
+```
+Use #ohm-mcp.rename_symbol to rename "old_function_name" to "new_function_name" in /path/to/project
+```
+Features:
+- ✅ AST-based (100% accurate)
+- ✅ Detects naming conflicts
+- ✅ Shows all occurrences before applying
+- ✅ Updates docstrings and comments
+
+### **📊 Type Coverage Analysis**
+```
+Analyze type hints in @module.py using #ohm-mcp.analyze_type_hints
+```
+Provides:
+- ✅ Coverage percentage and grade
+- ✅ Functions missing type hints
+- ✅ Suggested type annotations
+- ✅ Migration plan with priorities
+
+### **⚡ Performance Optimization**
+```
+Use #ohm-mcp.analyze_performance on @slow_module.py
+```
+Detects:
+- ✅ Nested loops (O(n²) complexity)
+- ✅ Quadratic list operations
+- ✅ Repeated function calls (missing caching)
+- ✅ Mutable default arguments
+- ✅ Inefficient string concatenation
+
+### **🧪 Auto-Generate Tests**
+```
+Generate tests for @calculator.py using #ohm-mcp.generate_characterization_tests
+```
+Creates:
+- ✅ Happy path test cases
+- ✅ Edge cases (None, zero, negative, empty)
+- ✅ Ready-to-run pytest code
+- ✅ Preserves current behavior before refactoring
+
+### **🎨 Design Pattern Suggestions**
+```
+Suggest design patterns for @legacy_code.py using #ohm-mcp.suggest_design_patterns
+```
+Recommends:
+- ✅ Strategy pattern for long if/elif chains
+- ✅ Factory pattern for repetitive object creation
+- ✅ Observer pattern for callback hell
+- ✅ Decorator pattern for cross-cutting concerns
+
+### **🔧 Import Refactoring**
+```
+Use #ohm-mcp.refactor_imports to update all files in /path/to/project from "old.module" to "new.module"
+```
+Handles:
+- ✅ Direct imports (`import old.module`)
+- ✅ From imports (`from old.module import X`)
+- ✅ Submodule imports
+- ✅ Import aliases
+
+---
+
 ## 🎯 Key Tools (30 Total)
 
 <details>
